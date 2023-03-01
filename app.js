@@ -10,7 +10,7 @@ databaseManager.connectedToDatabase()
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/v1/auth",authRouter)
+app.use("/v1/auth",authRouter)
 
 app.listen(3000,()=>{
     console.log("Server is listening on port => 3000");

@@ -6,7 +6,7 @@ const authController = require('../controller/authController')
 
 
 
-/* Middelware for checking user email exists or not */
+/* Middleware for checking email validation */
 
 router.use(authController.checkUserEmailInSystem)
 
@@ -16,6 +16,10 @@ router.use(authController.checkUserEmailInSystem)
 router.post('/login', authController.userLoginController)
 
 router.post('/signUp',authController.userSignUpController)
+
+router.post('/sendOtp', authController.sendOtpToEmail)
+
+router.post('/verifyOtp', authController.verifyOtp)
 
 
 module.exports = router
