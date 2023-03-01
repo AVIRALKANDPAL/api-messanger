@@ -1,0 +1,23 @@
+{
+  "name": "api-messanger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVIRALKANDPAL/api-messanger.git"
+  },
+  "keywords": [
+    "chat",
+    "app"
+  ],
+  "author": "Aviral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AVIRALKANDPAL/api-messanger/issues"
+  },
+  "homepage": "https://github.com/AVIRALKANDPAL/api-messanger#readme"
+}
