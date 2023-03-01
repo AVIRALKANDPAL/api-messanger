@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/AVIRALKANDPAL/api-messanger/issues"
   },
-  "homepage": "https://github.com/AVIRALKANDPAL/api-messanger#readme"
+  "homepage": "https://github.com/AVIRALKANDPAL/api-messanger#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "nodemon": "^2.0.20"
+  }
 }
