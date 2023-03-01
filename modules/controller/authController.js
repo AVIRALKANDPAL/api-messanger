@@ -82,20 +82,20 @@ exports.verifyOtp = async (req, res) => {
     const { email, otp } = req.body
     try {
         const emailVerification = await OTPVerification.findOne({ 'email': email });
-        if (emailVerification!=null){
-            if (otp === emailVerification.otp){
-                await OTPVerification.deleteOne({'email':email})
+        if (emailVerification != null) {
+            if (otp === emailVerification.otp) {
+                await OTPVerification.deleteOne({ 'email': email })
                 response.okHttpResponse({
                     response: res,
                     message: constants.messages.otpVerifiedSuccessfully,
                 })
-            }else{
+            } else {
                 response.okHttpResponseFailure({
                     response: res,
                     message: constants.messages.otpEnteredIncorrect,
                 })
             }
-        }else{
+        } else {
             response.okHttpResponseFailure({
                 response: res,
                 message: constants.messages.emailNotFound,
