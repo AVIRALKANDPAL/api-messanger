@@ -7,7 +7,7 @@ const passwordManager = require('../../helpers/password_manager');
 
 
 exports.checkUserEmailInSystem = async (req, res, next) => {
-    const { email } = req.body;
+    const email = req.body.email;
     if (email == null) {
         response.httpResponse({
             response: res,
@@ -85,10 +85,20 @@ exports.verifyOtp = async (req, res) => {
         if (emailVerification != null) {
             if (otp === emailVerification.otp) {
                 await OTPVerification.deleteOne({ 'email': email })
-                response.okHttpResponse({
-                    response: res,
-                    message: constants.messages.otpVerifiedSuccessfully,
-                })
+                var user = await User.findOne({ 'email': email })
+                if (user != null) {
+                    response.okHttpResponse({
+                        response: res,
+                        message: constants.messages.otpVerifiedSuccessfully,
+                        data: user,
+                    })
+                } else {
+                    response.okHttpResponse({
+                        response: res,
+                        message: constants.messages.otpVerifiedSuccessfully,
+                        data: null
+                    })
+                }
             } else {
                 response.okHttpResponseFailure({
                     response: res,
@@ -110,5 +120,45 @@ exports.verifyOtp = async (req, res) => {
 }
 
 exports.userSignUpController = async (req, res) => {
-
+    try {
+        const user = await User.create(req.body)
+        await user.save()
+        response.okHttpResponse({
+            response: res,
+            message: constants.messages.signUpSuccess,
+            data: user,
+        })
+    } catch (err) {
+        response.okHttpResponseFailure({
+            response: res,
+            message: err.message,
+        })
+    }
 };
+
+exports.updateUserController = async (req, res) => {
+    const { name,email } = req.body;
+    
+    if (name != null) {
+
+    } else if (req.file != null) {
+        const image = req.file;
+        image.path = "http://localhost:3000/"+image.path;
+        const user = await User.findOne({ email:email });
+        if (user!=null){
+            user.image = image.path;
+            response.okHttpResponse({
+                response: res,
+                message: constants.messages.profileUploaded,
+                data:user
+            })
+        }else{
+            response.okHttpResponse({
+                response: res,
+                message: constants.messages.profileUploaded,
+                data:image
+            })
+        }
+        
+    }
+}

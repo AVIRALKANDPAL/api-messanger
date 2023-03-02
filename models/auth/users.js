@@ -11,17 +11,14 @@ const userSchema = Schema({
         type: String,
         required: true,
     },
-    gender: {
-        type: String,
-    },
-    age: { type: String, },
     profilePicture: {
-        type: String,
-        default: "../../utils/images/avatar.png"
+        type: Object,
+        default: {"path":"public/images/profile/avatar.png"}
     },
-    password: { type:String, required:true},
-    isActive: {type: Boolean, default:false},
-    lastActive: {type: Date}
+    password: { type: String, required: true },
+    lastActive: { type: Date },
+    whoCanSeeLastSeen: { type: Number, required: true, default: 1 },
+    lastSeenList: { type: Array, required: true },
 })
 
 const userModel = mongoose.model('User', userSchema);

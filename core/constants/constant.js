@@ -9,6 +9,7 @@ const messages= {
     "userCanNotLogin": "User can't login!",
     "emailNotFound": "This email does not exist in our community.Please check it out or contact to P.O.",
     //F
+    "profileUploaded": "Profile Uploaded!",
     //G
     //H
     //I
@@ -27,6 +28,7 @@ const messages= {
     //Q
     //R
     //S
+    "signUpSuccess":"User signed up successfully!",
     //T
     //U
     "userLoggedIn": "User logged in successfully!",
