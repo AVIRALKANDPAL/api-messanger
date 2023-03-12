@@ -7,6 +7,7 @@ const passwordManager = require('../../helpers/password_manager');
 
 
 exports.checkUserEmailInSystem = async (req, res, next) => {
+    console.log(req.body);
     const email = req.body.email;
     if (email == null) {
         response.httpResponse({

@@ -4,11 +4,8 @@ const bodyParser = require('body-parser');
 const databaseManager = require('./helpers/mongo_manager')
 const authRouter = require('./modules/routes/authRouter')
 const response = require('./Responses-handler/response');
-const multerManager = require('./helpers/multerManager');
 
 const app = express();
-
-app.use("/v1/auth/uploadAvatar",multerManager.uploadSingleProfile())
 
 app.use('/public',express.static('public'))
 
